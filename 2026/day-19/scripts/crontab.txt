@@ -1,0 +1,8 @@
+# Log Rotation - Every day at 2 AM
+0 2 * * * /bin/bash /home/ec2-user/log_rotate.sh /var/log/myapp >> /home/ec2-user/devops.log 2>&1
+
+# Server Backup - Every Sunday at 3 AM
+0 3 * * 0 /bin/bash /home/ec2-user/lab/scripts/backup.sh /home/ec2-user/lab/source /home/ec2-user/lab/backup >> /home/ec2-user/lab/backup.log 2>&1
+
+# Health Check - Every 2 minutes
+*/2 * * * * /bin/bash /home/ec2-user/health_check.sh >> /home/ec2-user/health.log 2>&1
