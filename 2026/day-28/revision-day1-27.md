@@ -1,4 +1,4 @@
-# Day 28 – Revision Day: Everything from Day 1 to Day 27
+# 🚀Day 28 – Revision Day: Everything from Day 1 to Day 27
 
 > 📚 **Revision is not about learning something new. It is about making sure the concepts we already learned are strong enough to explain, troubleshoot, and use in real situations.**
 
