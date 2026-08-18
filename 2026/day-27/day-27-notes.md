@@ -60,6 +60,7 @@ All repos have:
 
 
 2. GitHub profile **After**
+<img width="1919" height="875" alt="Screenshot 2026-08-18 162216" src="https://github.com/user-attachments/assets/8ebd26e7-30b8-4f51-b8da-566482018fa3" />
 
 
 3. Things improved
@@ -75,5 +76,4 @@ All repos have:
 
 ---
 
-Happy Learning!
-**TrainWithShubham**
+
