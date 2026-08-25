@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Day 33 | Docker Compose</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #0f172a, #1e3a8a);
+            color: white;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 850px;
+            padding: 50px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 25px;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+        }
+
+        .docker {
+            font-size: 70px;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 42px;
+            margin-bottom: 12px;
+        }
+
+        .subtitle {
+            font-size: 20px;
+            color: #cbd5e1;
+            margin-bottom: 35px;
+        }
+
+        .highlight {
+            color: #38bdf8;
+            font-weight: bold;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .card {
+            width: 200px;
+            padding: 22px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .card h3 {
+            margin-bottom: 8px;
+            color: #38bdf8;
+        }
+
+        .card p {
+            color: #cbd5e1;
+            font-size: 14px;
+        }
+
+        .status {
+            display: inline-block;
+            margin-top: 35px;
+            padding: 10px 20px;
+            border-radius: 30px;
+            background: rgba(34, 197, 94, 0.15);
+            color: #4ade80;
+            border: 1px solid rgba(34, 197, 94, 0.4);
+            font-weight: bold;
+        }
+
+        footer {
+            margin-top: 30px;
+            color: #94a3b8;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="docker">🐳</div>
+
+        <h1>Docker Compose is <span class="highlight">Running!</span></h1>
+
+        <p class="subtitle">
+            Day 33 of my <strong>90 Days of DevOps</strong> journey
+        </p>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>🐳 Docker</h3>
+                <p>Containerized application environment</p>
+            </div>
+
+            <div class="card">
+                <h3>⚙️ Compose</h3>
+                <p>Managing containers with YAML</p>
+            </div>
+
+            <div class="card">
+                <h3>🌐 Nginx</h3>
+                <p>Web server running inside a container</p>
+            </div>
+
+        </div>
+
+        <div class="status">
+            ● Container is running successfully
+        </div>
+
+        <footer>
+            Built while learning Docker Compose 🚀
+        </footer>
+
+    </div>
+
+</body>
+</html>
+</html>
