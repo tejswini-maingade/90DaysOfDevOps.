@@ -16,9 +16,9 @@
 4. Access it in your browser
 
 
-    [Dockerfile](compose-basics/Dockerfile)
+    [Dockerfile](compose-basic/Dockerfile)
 
-   [Compose file](compose-basics/docker-compose.yml)
+   [Compose file](compose-basic/docker-compose.yml)
 
 <img width="1773" height="674" alt="Screenshot 2026-08-25 114822" src="https://github.com/user-attachments/assets/2b9656d2-ac4b-45e7-93b4-4eabf2d85de3" />
 <img width="1911" height="971" alt="Screenshot 2026-08-25 114914" src="https://github.com/user-attachments/assets/9d0b4b1f-a987-4baf-9b6d-341a87b7f4bf" />
