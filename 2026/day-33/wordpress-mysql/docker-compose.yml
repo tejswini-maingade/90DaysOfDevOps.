@@ -1,0 +1,30 @@
+services:
+
+  db:
+    image: mysql:8.0
+    container_name: wordpress-db
+    restart: always
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpresspass
+      MYSQL_ROOT_PASSWORD: rootpass
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  wordpress:
+    image: wordpress:latest
+    container_name: wordpress-app
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - "8081:80"
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpresspass
+      WORDPRESS_DB_NAME: wordpress
+
+volumes:
+  mysql_data:
