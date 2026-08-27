@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>DevOps 3-Tier Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">⚙</div>
+
+            <div>
+                <h2>DevOps</h2>
+                <span>Infrastructure</span>
+            </div>
+        </div>
+
+
+        <nav>
+
+            <a class="active">
+                <span>▦</span>
+                Dashboard
+            </a>
+
+            <a href="#services">
+                <span>◈</span>
+                Services
+            </a>
+
+            <a href="#architecture">
+                <span>◇</span>
+                Architecture
+            </a>
+
+            <a href="/health" target="_blank">
+                <span>♥</span>
+                Health API
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="docker-box">
+
+                <div class="docker-icon">🐳</div>
+
+                <div>
+                    <strong>Docker Compose</strong>
+                    <small>3 Services Running</small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+        <!-- HEADER -->
+
+        <header>
+
+            <div>
+
+                <div class="breadcrumb">
+                    DevOps / Docker / Day 34
+                </div>
+
+                <h1>
+                    3-Tier Application
+                </h1>
+
+                <p>
+                    Docker Compose Infrastructure Dashboard
+                </p>
+
+            </div>
+
+
+            <div class="header-right">
+
+                <div class="live">
+
+                    <span class="pulse"></span>
+
+                    SYSTEM OPERATIONAL
+
+                </div>
+
+                <div class="avatar">
+                    D
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- STAT CARDS -->
+
+        <section class="stats">
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <span>PAGE VISITS</span>
+
+                    <div class="stat-icon purple">
+                        ◉
+                    </div>
+
+                </div>
+
+                <strong>{{ total_visits }}</strong>
+
+                <p>
+                    Total requests
+                </p>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <span>REDIS CACHE</span>
+
+                    <div class="stat-icon orange">
+                        ⚡
+                    </div>
+
+                </div>
+
+                <strong>{{ cached_value }}</strong>
+
+                <p>
+                    Cached value
+                </p>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <span>UPTIME</span>
+
+                    <div class="stat-icon green">
+                        ↑
+                    </div>
+
+                </div>
+
+                <strong>{{ uptime }}s</strong>
+
+                <p>
+                    Application uptime
+                </p>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <span>CONTAINER</span>
+
+                    <div class="stat-icon blue">
+                        ◈
+                    </div>
+
+                </div>
+
+                <strong>ONLINE</strong>
+
+                <p>
+                    {{ container_name[:12] }}
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- SERVICES -->
+
+        <section id="services">
+
+            <div class="section-title">
+
+                <div>
+
+                    <h2>
+                        Service Health
+                    </h2>
+
+                    <p>
+                        Live status of your application stack
+                    </p>
+
+                </div>
+
+                <span class="badge">
+                    3 SERVICES
+                </span>
+
+            </div>
+
+
+            <div class="services">
+
+
+                <!-- WEB -->
+
+                <div class="service-card">
+
+                    <div class="service-header">
+
+                        <div class="service-logo flask">
+                            🐍
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Flask Web App
+                            </h3>
+
+                            <span>
+                                Port 5000
+                            </span>
+
+                        </div>
+
+                        <div class="status">
+                            <span></span>
+                            Running
+                        </div>
+
+                    </div>
+
+
+                    <div class="service-details">
+
+                        <div>
+                            <small>FRAMEWORK</small>
+                            <strong>Flask</strong>
+                        </div>
+
+                        <div>
+                            <small>CONTAINER</small>
+                            <strong>{{ container_name[:10] }}</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DATABASE -->
+
+                <div class="service-card">
+
+                    <div class="service-header">
+
+                        <div class="service-logo mysql">
+                            🗄
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                MySQL Database
+                            </h3>
+
+                            <span>
+                                Port 3306
+                            </span>
+
+                        </div>
+
+                        <div class="status">
+
+                            <span></span>
+
+                            {{ db_status }}
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="service-details">
+
+                        <div>
+                            <small>DATABASE</small>
+                            <strong>devtask</strong>
+                        </div>
+
+                        <div>
+                            <small>PERSISTENCE</small>
+                            <strong>Named Volume</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- REDIS -->
+
+                <div class="service-card">
+
+                    <div class="service-header">
+
+                        <div class="service-logo redis">
+                            ⚡
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Redis Cache
+                            </h3>
+
+                            <span>
+                                Port 6379
+                            </span>
+
+                        </div>
+
+                        <div class="status">
+
+                            <span></span>
+
+                            {{ redis_status }}
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="service-details">
+
+                        <div>
+                            <small>TYPE</small>
+                            <strong>Cache</strong>
+                        </div>
+
+                        <div>
+                            <small>NETWORK</small>
+                            <strong>app-network</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ARCHITECTURE -->
+
+        <section id="architecture">
+
+            <div class="section-title">
+
+                <div>
+
+                    <h2>
+                        Application Architecture
+                    </h2>
+
+                    <p>
+                        Container communication flow
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="architecture">
+
+
+                <div class="architecture-node web-node">
+
+                    <div class="node-icon">
+                        🐍
+                    </div>
+
+                    <h3>
+                        Flask
+                    </h3>
+
+                    <span>
+                        :5000
+                    </span>
+
+                </div>
+
+
+                <div class="connection">
+
+                    <span>
+                        HTTP
+                    </span>
+
+                    ─────────▶
+
+                </div>
+
+
+                <div class="architecture-node db-node">
+
+                    <div class="node-icon">
+                        🗄
+                    </div>
+
+                    <h3>
+                        MySQL
+                    </h3>
+
+                    <span>
+                        :3306
+                    </span>
+
+                </div>
+
+
+                <div class="connection">
+
+                    <span>
+                        CACHE
+                    </span>
+
+                    ─────────▶
+
+                </div>
+
+
+                <div class="architecture-node redis-node">
+
+                    <div class="node-icon">
+                        ⚡
+                    </div>
+
+                    <h3>
+                        Redis
+                    </h3>
+
+                    <span>
+                        :6379
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- DEPLOYMENT INFO -->
+
+        <section class="deployment">
+
+            <div>
+
+                <h2>
+                    🐳 Docker Compose
+                </h2>
+
+                <p>
+                    Multi-container application running
+                    on a dedicated Docker network.
+                </p>
+
+            </div>
+
+
+            <div class="deployment-items">
+
+                <div>
+                    <strong>3</strong>
+                    <span>Services</span>
+                </div>
+
+                <div>
+                    <strong>1</strong>
+                    <span>Network</span>
+                </div>
+
+                <div>
+                    <strong>1</strong>
+                    <span>Volume</span>
+                </div>
+
+                <div>
+                    <strong>100%</strong>
+                    <span>Healthy</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <footer>
+
+            <span>
+                Day 34 • 90 Days of DevOps
+            </span>
+
+            <span>
+                Flask • MySQL • Redis • Docker Compose
+            </span>
+
+        </footer>
+
+    </main>
+
+</div>
+
+
+<script>
+
+    // Refresh page every 30 seconds
+    setTimeout(function() {
+        location.reload();
+    }, 30000);
+
+</script>
+
+</body>
+
+</html>

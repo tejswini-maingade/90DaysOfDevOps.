@@ -1,0 +1,164 @@
+services:
+
+  # --------------------------------
+  # Flask Web Application
+  # --------------------------------
+
+  web:
+
+    build: ./app
+
+    container_name: day34-web
+
+    ports:
+      - "5000:5000"
+
+    environment:
+
+      DB_HOST: db
+
+      DB_USER: devuser
+
+      DB_PASSWORD: devpass
+
+      DB_NAME: devtask
+
+      REDIS_HOST: redis
+
+    depends_on:
+
+      db:
+        condition: service_healthy
+
+      redis:
+        condition: service_started
+
+    restart: on-failure
+
+    networks:
+      - app-network
+
+    labels:
+
+      project: "90DaysOfDevOps"
+
+      day: "34"
+
+      service: "web"
+
+      tier: "application"
+
+
+  # --------------------------------
+  # MySQL Database
+  # --------------------------------
+
+  db:
+
+    image: mysql:8.0
+
+    container_name: day34-db
+
+    environment:
+
+      MYSQL_ROOT_PASSWORD: rootpass
+
+      MYSQL_DATABASE: devtask
+
+      MYSQL_USER: devuser
+
+      MYSQL_PASSWORD: devpass
+
+    ports:
+
+      - "3306:3306"
+
+    volumes:
+
+      - mysql-data:/var/lib/mysql
+
+    healthcheck:
+
+      test:
+        [
+          "CMD",
+          "mysqladmin",
+          "ping",
+          "-h",
+          "localhost",
+          "-uroot",
+          "-prootpass"
+        ]
+
+      interval: 10s
+
+      timeout: 5s
+
+      retries: 5
+
+      start_period: 20s
+
+    restart: always
+
+    networks:
+      - app-network
+
+    labels:
+
+      project: "90DaysOfDevOps"
+
+      day: "34"
+
+      service: "database"
+
+      tier: "data"
+
+
+  # --------------------------------
+  # Redis Cache
+  # --------------------------------
+
+  redis:
+
+    image: redis:7-alpine
+
+    container_name: day34-redis
+
+    ports:
+
+      - "6379:6379"
+
+    restart: always
+
+    networks:
+      - app-network
+
+    labels:
+
+      project: "90DaysOfDevOps"
+
+      day: "34"
+
+      service: "cache"
+
+      tier: "data"
+
+
+# --------------------------------
+# Network
+# --------------------------------
+
+networks:
+
+  app-network:
+
+    driver: bridge
+
+
+# --------------------------------
+# Persistent Storage
+# --------------------------------
+
+volumes:
+
+  mysql-data:
