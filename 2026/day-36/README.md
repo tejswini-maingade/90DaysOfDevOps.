@@ -14,6 +14,7 @@ No tutorials. No hand-holding. Pick an app, write the Dockerfile, set up Compose
 
 ---
 
+
 ## Challenge Tasks
 
 ### Task 1: Pick Your App
