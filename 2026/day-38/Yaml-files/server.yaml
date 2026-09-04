@@ -1,0 +1,21 @@
+---
+
+server:
+  name: devops-server
+  ip: 192.169.1.102
+  port: 8080
+
+database:
+  host: db-server
+  name: devopsdb
+  credentials:
+    user: tej
+    password: tej@123
+
+
+startup_script: |
+  #!/bin/bash
+  echo "Starting DevOps server"
+  systemctl start docker
+  systemctl start nginx
+  echo "Server started successfully"
