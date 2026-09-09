@@ -1,0 +1,47 @@
+# Name of the worflow
+name: hello worflow
+
+# Trigger the workflow on every push
+on:
+  push:
+    branches:
+      - main
+
+# Define the jobs that will run in this workflow
+jobs:
+  greet:
+
+    # specify the runner environment
+    runs-on: ubuntu-latest
+    
+    # Steps represents of tasks executed as a part of the job
+    steps:
+      # Step 1: Checkout the repository 
+      - name: Check repository
+        uses: actions/checkout@v4
+        
+      # Step 2: Print greeting
+      - name: Print greeting
+        run: echo "Hello from GitHub Actions!"
+
+      # Step 3: Print the current date and time
+      - name: Print the current date and time
+        run: date
+
+      # Step 4: Print branch name
+      - name: Print branch name
+        run: |
+          echo "Triggered by branch: ${{ github.ref_name }}"
+
+      # Step 5 List repo file
+      - name: List repo files
+        run: ls -la
+
+      # Step 6 Print runner operating system
+      - name: Print runner OS
+        run: |
+          echo "Runner OS: ${{ runner.os}}"
+
+      # Step 6 Intentionally fail    
+      # - name: Break the workflow on purpose
+      #   run: exit 1
