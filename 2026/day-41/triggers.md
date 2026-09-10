@@ -20,9 +20,6 @@ Your pipeline runs on push. Today you learn **every way to trigger a workflow** 
   
 <img width="1919" height="850" alt="Screenshot 2026-09-10 135152" src="https://github.com/user-attachments/assets/c705a306-114a-4a7b-a3ab-2e5577b8ee2f" />
 
-- After updating pull request
-
-<img width="1481" height="512" alt="image" src="https://github.com/user-attachments/assets/959ec7d2-11f7-4cea-8fbb-d410d04843c2" />
 
 ---
 
@@ -64,7 +61,8 @@ Then extend the matrix to also include 2 operating systems — how many total jo
 ### Task 5: Exclude & Fail-Fast
 1. In your matrix, **exclude** one specific combination (e.g., Python 3.10 on Windows)
 - After adding exclude for python-3.10 on macos it skipped that job.
-<img width="1918" height="913" alt="image" src="https://github.com/user-attachments/assets/e9c54d71-d8f9-4715-868a-95d450bab63e" />
+<img width="1919" height="867" alt="Screenshot 2026-09-10 141019" src="https://github.com/user-attachments/assets/f85da938-51fd-44ae-b675-ebdd606b4d00" />
+
 
 2. Set `fail-fast: false` — trigger a failure in one job and observe what happens to the rest
  - `fail-fast: false`
@@ -74,6 +72,7 @@ Then extend the matrix to also include 2 operating systems — how many total jo
 3. Write in your notes: What does `fail-fast: true` (the default) do vs `false`?
 
 - `fail-fast: true`
+<img width="1918" height="867" alt="Screenshot 2026-09-10 140936" src="https://github.com/user-attachments/assets/1d9bee31-01ed-4508-8aa3-3ca097d980da" />
 
 
 
