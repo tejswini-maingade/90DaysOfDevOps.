@@ -17,6 +17,7 @@ Every job needs a machine to run on. Today you understand **runners** — GitHub
    - The runner's hostname
    - The current user running the job
 3. Watch all 3 run in parallel
+[runner yaml file](https://github.com/tejswini-maingade/GitHub-Action-Practice/blob/main/.github/workflows/runners.yml)
 
 <img width="1919" height="835" alt="Screenshot 2026-09-10 143231" src="https://github.com/user-attachments/assets/7460bde7-b5cf-46c5-9512-05c9423a1557" />
 <img width="1919" height="780" alt="Screenshot 2026-09-10 143247" src="https://github.com/user-attachments/assets/8558f819-4a4b-444a-8cae-2bc4244f2009" />
@@ -49,6 +50,7 @@ Every job needs a machine to run on. Today you understand **runners** — GitHub
    - Git version
 2. Look up the GitHub docs for the full list of pre-installed software on `ubuntu-latest`
 
+[software yaml file](https://github.com/tejswini-maingade/GitHub-Action-Practice/blob/main/.github/workflows/software.yml)
 <img width="1919" height="840" alt="Screenshot 2026-09-10 143825" src="https://github.com/user-attachments/assets/e476975c-34c7-4e1f-a66c-9c35db780fa9" />
 
 
@@ -67,6 +69,7 @@ Every job needs a machine to run on. Today you understand **runners** — GitHub
 4. Start the runner — verify it shows as **Idle** in GitHub
 
 **Verify:** Your runner appears in the Runners list with a green dot.
+
 
 <img width="1918" height="755" alt="Screenshot 2026-09-18 162009" src="https://github.com/user-attachments/assets/a58e80de-ce29-4dc3-93b7-2197cd111659" />
 <img width="1919" height="159" alt="Screenshot 2026-09-18 162038" src="https://github.com/user-attachments/assets/7d889ec9-20e9-43cd-8469-43cccc2e7f43" />
