@@ -20,6 +20,8 @@ Make `deploy` run only **after** `test` succeeds.
 
 - Yes It show the dependency chain
 
+  [multijob yaml file](https://github.com/tejswini-maingade/GitHub-Action-Practice/blob/main/.github/workflows/multi-job.yml)
+
 <img width="1919" height="875" alt="Screenshot 2026-09-18 171115" src="https://github.com/user-attachments/assets/f16e9d44-dd37-4b73-9434-061ace5e8954" />
 
 
@@ -39,6 +41,8 @@ Print all three in a single step and verify each is accessible.
 
 Then use a **GitHub context variable** — print the commit SHA and the actor (who triggered the run).
 
+[env-variable yaml file](https://github.com/tejswini-maingade/GitHub-Action-Practice/blob/main/.github/workflows/env-vars.yml)
+
 <img width="1919" height="881" alt="Screenshot 2026-09-18 171034" src="https://github.com/user-attachments/assets/bddbd7ec-bc4d-4d23-8455-a6fd3bdb4927" />
 
 
@@ -48,6 +52,8 @@ Then use a **GitHub context variable** — print the commit SHA and the actor (w
 1. Create a job that **sets an output** — e.g., today's date as a string
 2. Create a second job that **reads that output** and prints it
 3. Pass the value using `outputs:` and `needs.<job>.outputs.<name>`
+
+ [job output yaml file](https://github.com/tejswini-maingade/GitHub-Action-Practice/blob/main/.github/workflows/job-outputs.yml)  
 
 <img width="1919" height="872" alt="Screenshot 2026-09-18 171247" src="https://github.com/user-attachments/assets/5cab4b47-a2b9-4e98-a400-7bc68bc979eb" />
 <img width="1919" height="803" alt="Screenshot 2026-09-18 171311" src="https://github.com/user-attachments/assets/da63a15b-d65b-4fde-a494-39ab2966ae26" />
@@ -82,6 +88,8 @@ In a workflow, add:
 3. A job that only runs on **push** events, not on pull requests
 4. A step with `continue-on-error: true` — what does this do?
 
+[conditional yaml file](https://github.com/tejswini-maingade/GitHub-Action-Practice/blob/main/.github/workflows/conditionals.yml)
+
 <img width="1919" height="880" alt="Screenshot 2026-09-18 171517" src="https://github.com/user-attachments/assets/742fd457-0214-4869-83bc-ff429402d21f" />
 <img width="1919" height="842" alt="Screenshot 2026-09-18 171529" src="https://github.com/user-attachments/assets/9fb48879-ce5f-44e2-9586-0394544fb578" />
 
@@ -93,6 +101,8 @@ Create `.github/workflows/smart-pipeline.yml` that:
 1. Triggers on push to any branch
 2. Has a `lint` job and a `test` job running in parallel
 3. Has a `summary` job that runs after both, prints whether it's a `main` branch push or a feature branch push, and prints the commit message
+
+[lint yaml file](https://github.com/tejswini-maingade/GitHub-Action-Practice/blob/main/.github/workflows/smart-pipeline.yml)
 
 <img width="1919" height="878" alt="Screenshot 2026-09-18 171650" src="https://github.com/user-attachments/assets/4c9c2e52-1ff5-4344-8d18-373befd3da4f" />
 <img width="1917" height="791" alt="Screenshot 2026-09-18 171706" src="https://github.com/user-attachments/assets/f8553dad-b1fd-4a28-b010-2e21d3da551c" />
