@@ -17,7 +17,8 @@ Your pipeline runs on push. Today you learn **every way to trigger a workflow** 
 **Verify:** Does it show up on the PR page? - **Yes**
 
 - After creating pull request
-  
+[pr-check yaml file](https://github.com/tejswini-maingade/GitHub-Action-Practice/blob/main/.github/workflows/pr-check.yml)
+ 
 <img width="1919" height="850" alt="Screenshot 2026-09-10 135152" src="https://github.com/user-attachments/assets/c705a306-114a-4a7b-a3ab-2e5577b8ee2f" />
 
 
@@ -39,7 +40,7 @@ Your pipeline runs on push. Today you learn **every way to trigger a workflow** 
 4. Go to the **Actions** tab → find the workflow → click **Run workflow**
 
 **Verify:** Can you trigger it manually and see your input printed?
-
+[manual yaml file](https://github.com/tejswini-maingade/GitHub-Action-Practice/blob/main/.github/workflows/manual.yml)
 
 <img width="1917" height="833" alt="Screenshot 2026-09-10 135401" src="https://github.com/user-attachments/assets/1a53d268-1e52-4878-a26b-471ae967af83" />
 
@@ -53,7 +54,7 @@ Create `.github/workflows/matrix.yml` that:
 3. Watch all 3 run in parallel
 
 Then extend the matrix to also include 2 operating systems — how many total jobs run now?
-
+[matrix yaml](https://github.com/tejswini-maingade/GitHub-Action-Practice/blob/main/.github/workflows/matrix.yml)
 <img width="1919" height="879" alt="Screenshot 2026-09-10 135532" src="https://github.com/user-attachments/assets/3b9a51b3-f519-4ab4-968e-7026dd01a425" />
 
 ---
@@ -61,6 +62,9 @@ Then extend the matrix to also include 2 operating systems — how many total jo
 ### Task 5: Exclude & Fail-Fast
 1. In your matrix, **exclude** one specific combination (e.g., Python 3.10 on Windows)
 - After adding exclude for python-3.10 on macos it skipped that job.
+
+ [ matrios yaml file](https://github.com/tejswini-maingade/GitHub-Action-Practice/blob/main/.github/workflows/matrixos.yml)
+ 
 <img width="1919" height="867" alt="Screenshot 2026-09-10 141019" src="https://github.com/user-attachments/assets/f85da938-51fd-44ae-b675-ebdd606b4d00" />
 
 
