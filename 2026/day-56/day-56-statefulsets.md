@@ -27,11 +27,8 @@ Delete the Deployment before moving on.
 
 - Random pod names break database clusters because nodes need stable names for connections, replication, and storage.
 
-- Before
-<img width="730" height="240" alt="image" src="https://github.com/user-attachments/assets/1c60ab46-2565-465f-8ecd-8ff4a08a69e1" />
+<img width="1919" height="728" alt="Screenshot 2026-10-10 193924" src="https://github.com/user-attachments/assets/0f18b11e-be95-47b2-b740-0b51091ae65b" />
 
-- After
-<img width="722" height="182" alt="image" src="https://github.com/user-attachments/assets/be144cd4-3880-4182-9dd7-2d91bd92fc0f" />
 
 ---
 
@@ -45,7 +42,8 @@ A Headless Service creates individual DNS entries for each pod instead of load-b
 **Verify:** What does the CLUSTER-IP column show?
 - CLUSTER_IP Column Show : `None`
 
-<img width="755" height="217" alt="image" src="https://github.com/user-attachments/assets/88f2034e-5d10-4d1c-95d5-2c69eca2e993" />
+<img width="1255" height="571" alt="Screenshot 2026-10-10 194055" src="https://github.com/user-attachments/assets/9c8010b7-7c43-4ead-8746-a0bfb345bf4a" />
+
 
 ---
 
@@ -64,11 +62,8 @@ Check the PVCs: `kubectl get pvc` — you should see `web-data-web-0`, `web-data
 - Pod names : `web-0` `web-1` `web-2`
 - PVC names : `web-data-web-0` `web-data-web-1` `web-data-web-2`
 
-<img width="707" height="56" alt="image" src="https://github.com/user-attachments/assets/f46c782a-415a-4003-9ce6-bbea2e3ae8e4" />
-
-<img width="741" height="192" alt="image" src="https://github.com/user-attachments/assets/a009cf76-634f-4d24-9cb9-bcfb4c6d250f" />
-
-<img width="1282" height="125" alt="image" src="https://github.com/user-attachments/assets/b042e2ca-cf7c-47d7-8b14-98e2a23b3e1e" />
+<img width="1495" height="675" alt="Screenshot 2026-10-10 194340" src="https://github.com/user-attachments/assets/c59211a1-c6fc-4826-a703-022b8ac567a5" />
+<img width="1510" height="668" alt="Screenshot 2026-10-10 194407" src="https://github.com/user-attachments/assets/dd077f7f-9994-4518-9853-3948fc510d1c" />
 
 ---
 
@@ -82,7 +77,8 @@ Each StatefulSet pod gets a DNS name: `<pod-name>.<service-name>.<namespace>.svc
 **Verify:** Does the nslookup IP match the pod IP?
 - Yes,nslookup IP match the Pod IP 
 
-<img width="1317" height="741" alt="image" src="https://github.com/user-attachments/assets/f9094d66-286d-4a0f-ac41-42c00e7f2d16" />
+<img width="1514" height="554" alt="Screenshot 2026-10-10 195222" src="https://github.com/user-attachments/assets/f6802a5a-9cd3-4ac9-bc8f-7f01c8d0c8c0" />
+
 
 ---
 
@@ -96,12 +92,8 @@ The new pod reconnected to the same PVC.
 **Verify:** Is the data identical after pod recreation?
 
 - Yes,exactly the same
+<img width="1745" height="539" alt="Screenshot 2026-10-10 195521" src="https://github.com/user-attachments/assets/45a07e8d-db3e-406a-ad2d-7b75d9ae7591" />
 
-<img width="867" height="121" alt="image" src="https://github.com/user-attachments/assets/2127de5d-cf9b-4ffc-8057-a4d602bdb542" />
-
-<img width="830" height="65" alt="image" src="https://github.com/user-attachments/assets/fe7bda0b-7884-433e-a421-d69e0cbf4010" />
-
-<img width="795" height="192" alt="image" src="https://github.com/user-attachments/assets/49122aac-3403-442c-8ca6-df13ae06ac20" />
 
 ---
 
@@ -114,9 +106,9 @@ The new pod reconnected to the same PVC.
 
 - After scaling down, 5 PVCs exits
 
-<img width="1322" height="442" alt="image" src="https://github.com/user-attachments/assets/38c791a9-5c5b-459c-98c8-15850846f6be" />
+<img width="1885" height="721" alt="Screenshot 2026-10-10 195748" src="https://github.com/user-attachments/assets/6d059d7b-08b5-4e01-a083-8b2b12276618" />
+<img width="1678" height="525" alt="Screenshot 2026-10-10 195809" src="https://github.com/user-attachments/assets/ed8f0a62-fba0-4d20-886f-576aaf25388b" />
 
-<img width="1326" height="412" alt="image" src="https://github.com/user-attachments/assets/77ea200a-439a-4f7f-80fb-bde5b98ad0c4" />
 
 ---
 
@@ -128,9 +120,8 @@ The new pod reconnected to the same PVC.
 **Verify:** Were PVCs auto-deleted with the StatefulSet?
 
 - PVCs are NOT auto-deleted when a StatefulSet is deleted
-<img width="1337" height="247" alt="image" src="https://github.com/user-attachments/assets/44c589aa-ad9c-422c-837d-7bbb09c17d44" />
 
-<img width="815" height="332" alt="image" src="https://github.com/user-attachments/assets/d1ec4ae1-e10b-4e0c-8b24-2e67c0e174db" />
+<img width="1026" height="339" alt="Screenshot 2026-10-10 200329" src="https://github.com/user-attachments/assets/70e4f83c-59c6-4ad4-a4a1-a4c6a2b994a1" />
 
 ---
 
