@@ -1,0 +1,7 @@
+---
+# defaults file for roles/docker
+docker_app_image: nginx
+docker_app_tag: latest
+docker_app_name: myapp
+docker_app_port: 8080
+docker_container_port: 80
