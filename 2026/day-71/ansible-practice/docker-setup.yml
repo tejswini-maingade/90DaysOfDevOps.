@@ -1,0 +1,34 @@
+---
+- name: Install Docker using Galaxy role
+  hosts: app-server
+  become: yes
+
+  vars:
+    # Use jammy repo for compatibility with Ubuntu 24.04
+    docker_apt_repository:
+      repo: "deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu jammy stable"
+
+    docker_apt_key_url: "https://download.docker.com/linux/ubuntu/gpg"
+    docker_apt_keyring: "/etc/apt/keyrings/docker.gpg"
+
+    # Docker packages
+    docker_package: "docker-ce"
+    docker_package_state: present
+    docker_compose_package: "docker-compose-plugin"
+    docker_compose_package_state: present
+
+    # Docker service
+    docker_daemon_enable: true
+    docker_daemon_state: started
+
+    # Users
+    docker_users:
+      - ubuntu
+
+    # Skip tasks that fail in check mode
+    docker_skip_package_install: "{{ ansible_check_mode }}"
+    docker_skip_service_start: "{{ ansible_check_mode }}"
+
+  roles:
+    - role: geerlingguy.docker
+      when: not docker_skip_package_install
