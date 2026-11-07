@@ -1,0 +1,15 @@
+---
+timezone: Asia/Kolkata
+project_name: devops-app
+app_env: development
+
+common_packages:
+  - vim-enhanced
+  #- curl
+  - wget
+  - git
+  - htop
+  - tree
+  - jq
+  - unzip
+  - python3-pip
