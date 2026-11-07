@@ -1,0 +1,40 @@
+---
+# tasks file for roles/webserver
+
+- name: Install nginx
+  apt:
+    name: nginx
+    state: present
+
+- name: Deploy Nginx config
+  template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/nginx.conf
+    owner: root
+    mode: "0644"
+  notify: Restart Nginx
+
+- name: Deploy vhost config
+  template:
+    src: vhost.conf.j2
+    dest: "/etc/nginx/conf.d/{{ app_name }}.conf"
+    owner: root
+    mode: "0644"
+  notify: Restart Nginx
+
+- name: Create web root
+  file:
+    path: "/var/www/{{ app_name }}"
+    state: directory
+    mode: "0755"
+
+- name: Deploy index page
+  template:
+    src: index.html.j2
+    dest: "/var/www/{{ app_name }}/index.html"
+
+- name: Start and enable Nginx
+  service:
+    name: nginx
+    state: started
+    enabled: true
