@@ -1,0 +1,49 @@
+---
+- name: Loops Demo
+  hosts: all
+  become: true
+
+  vars:
+    users:
+      - name: deploy
+        groups: wheel
+      - name: monitor
+        groups: wheel
+      - name: appuser
+        groups: users
+
+    directories:
+      - /opt/app/logs
+      - /opt/app/config
+      - /opt/app/data
+      - /opt/app/tmp
+
+  tasks:
+    - name: Create multiple users
+      user:
+        name: "{{ item.name }}"
+        groups: "{{ item.groups }}"
+        state: present
+      loop: "{{ users }}"
+
+    - name: Create multiple directories
+      file:
+        path: "{{ item }}"
+        state: directory
+        mode: "0755"
+      loop: "{{ directories }}"
+
+    - name: Install multiple packages
+      yum:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - git
+        - curl
+        - unzip
+        - jq
+
+    - name: Print each user created
+      debug:
+        msg: "Created user {{ item.name }} in group {{ item.groups }}"
+      loop: "{{ users }}"
