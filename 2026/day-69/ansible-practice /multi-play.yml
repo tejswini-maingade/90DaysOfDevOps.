@@ -1,0 +1,44 @@
+---
+- name: Configure web server
+  hosts: web
+  become: true
+  tasks:
+    - name: Install nginx
+      yum:
+        name: nginx
+        state: present
+    - name: Start Nginx
+      service:
+        name: nginx
+        state: started
+        enabled: true
+
+- name: Configure app servers
+  hosts: app
+  become: true
+  tasks:
+    - name: Install Node.js dependencies
+      yum:
+        name:
+          - gcc
+          - make
+        state: present
+    - name: Create app directory
+      file:
+        path: /opt/app
+        state: directory
+        mode: "0755"
+
+- name: Configure database servers
+  hosts: db
+  become: true
+  tasks:
+    - name: Install Mysql Client
+      yum:
+        name: mariadb1011  # MariaDB works like MySQL and is already available on Amazon Linux 2023.
+        state: present
+    - name: Create data directory
+      file:
+        path: /var/lib/appdata
+        state: directory
+        mode: "0700"
