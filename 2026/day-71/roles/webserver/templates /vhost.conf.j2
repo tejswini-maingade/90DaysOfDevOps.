@@ -1,0 +1,23 @@
+# Managed by Ansible -- do not edit manually
+
+server {
+    # Listen on configured HTTP port
+    listen {{ http_port | default(80) }} default_server;
+
+    # Server name: IP as default, _ as wildcard
+    server_name {{ ansible_default_ipv4.address }} _;
+
+    # Web root directory
+    root /var/www/{{ app_name }};
+    index index.html;
+
+    # Request handling
+    location / {
+        # Try requested URI, then directory, else return 404
+        try_files $uri $uri/ =404;
+    }
+
+    # App-specific logs
+    access_log /var/log/nginx/{{ app_name }}_access.log;
+    error_log /var/log/nginx/{{ app_name }}_error.log;
+}
