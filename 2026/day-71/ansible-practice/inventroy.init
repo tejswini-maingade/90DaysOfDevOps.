@@ -1,0 +1,22 @@
+[web]
+web-server ansible_host=WEB_SERVER_IP
+
+[app]
+app-server ansible_host=APP_SERVER_IP
+
+[db]
+db-server ansible_host=DB_SERVER_IP
+
+[all:vars]
+#ansible_user=ec2-user
+#ansible_ssh_private_key_file=/home/ubuntu/ansible-practice/key/ansible.pem
+ansible_python_interpreter=/usr/bin/python3
+
+
+[application:children]
+web
+app
+
+[all_servers:children]
+application
+db
