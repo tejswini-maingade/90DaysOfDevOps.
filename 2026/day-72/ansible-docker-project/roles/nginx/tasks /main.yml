@@ -1,0 +1,46 @@
+---
+# tasks file for roles/nginx
+- name: Install Nginx
+  dnf:
+    name: nginx
+    state: present
+  tags: nginx
+
+- name: Remove default Nginx site config
+  file:
+    path: /etc/nginx/conf.d/default.conf
+    state: absent
+  notify: Reload Nginx
+  tags: nginx
+
+- name: Deploy main Nginx config
+  template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/nginx.conf
+    owner: root
+    group: root
+    mode: '0644'
+  notify: Reload Nginx
+  tags: nginx
+
+- name: Deploy reverse proxy config
+  template:
+    src: app-proxy.conf.j2
+    dest: /etc/nginx/conf.d/{{ project_name }}.conf
+    owner: root
+    group: root
+    mode: '0644'
+  notify: Reload Nginx
+  tags: nginx
+
+- name: Test Nginx configuration
+  command: nginx -t
+  changed_when: false
+  tags: nginx
+
+- name: Start and enable Nginx
+  service:
+    name: nginx
+    state: started
+    enabled: true
+  tags: nginx
