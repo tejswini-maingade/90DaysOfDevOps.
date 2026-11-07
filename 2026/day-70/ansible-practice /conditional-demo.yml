@@ -1,0 +1,49 @@
+---
+- name: Conditional tasks demo
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Install nginx (Only on web servers)
+      yum:
+        name: nginx
+        state: present
+      when: "'web' in group_names"
+
+    - name: Install MariaDB (only on db servers)
+      dnf:
+        name: mariadb1011
+        state: present
+      when: "'db' in group_names"
+
+    - name: Show warning on low memory hosts
+      debug:
+        msg: "WARNING: This host has less than 1GB RAM"
+      when: ansible_memtotal_mb < 1024
+
+    - name: Run only on Amazon Linux
+      debug:
+        msg: "This is an Amazon Linux machine"
+      when: ansible_distribution == "Amazon"
+
+    - name: Run only on Ubuntu
+      debug:
+        msg: "This is an Ubuntu machine"
+      when: ansible_distribution == "Ubuntu"
+
+    - name: Run only in production
+      debug:
+        msg: "Production settings applied"
+      when: app_env == "production"
+
+    - name: Multiple conditions (AND)
+      debug:
+        msg: "Web Server with enough memory"
+      when:
+        - "'web' in group_names"
+        - ansible_memtotal_mb >= 512
+
+    - name: OR condition
+      debug:
+        msg: "Either web or app servers"
+      when: "'web' in group_names or 'app' in group_names"
