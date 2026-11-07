@@ -1,0 +1,22 @@
+---                                                                # YAML document start
+- name: Install and start Nginx on web servers                     # PLAY name
+  hosts: web                                                       # Target Inventory Group: Executes on all hosts in the 'web' group
+  become: true                                                     # Privilege Escalation: Executes tasks as root using sudo
+
+  tasks:                                                           # list of Tasks
+
+    - name: Install Nginx                                          # Task 1: Ensure Nginx is installed
+      yum:                                                         # Module: yum 
+        name: nginx                                                # Name of the package to install
+        state: present                                             # Desired State: Package must be installed (idempotent)
+
+    - name: Start and Enable Nginx                                 # Task 2: Ensure Nginx service is running and enabled on boot
+      service:                                                     # Module: service (manages system services)
+        name: nginx                                                # Service to manage
+        state: started                                             # Desired State: Service must be running
+        enabled: true                                              # Boot Behavior: Service enabled to start on system boot
+
+    - name: Create a custom index page                             # Task 3: Create a custom HTML page
+      copy:                                                        # Module: copy (copies files or content to remote hosts)
+        content: "<h1>Deploy by Ansible - TerraWeek Server</h1>"   # Inline content for index.html
+        dest: /usr/share/nginx/html/index.html                     # Destination path on remote host(web)
