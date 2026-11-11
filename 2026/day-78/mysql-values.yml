@@ -1,0 +1,20 @@
+mysqlRootPassword: Test@123    # Root user password for MySQL
+mysqlDatabase: bankappdb       # Initial database created at startup
+
+resources:                     # Pod resource requests and limits
+  limits:                      # Maximum allowed resources
+    cpu: 500m
+    memory: 512Mi
+  requests:                    # Guaranteed minimum resources
+    cpu: 250m
+    memory: 256Mi
+
+persistence:                   # PersistentVolumeClaim configuration
+  size: 5Gi                    # Storage size for MySQL data
+  storageClass: ""             # Uses default storage class
+
+# Metrics section (NOTE: NOT supported in stable/mysql, ignored if used)
+metrics:                       # Exposes MySQL metrics for Prometheus monitoring (Bitnami feature)
+  enabled: true                # Would deploy a metrics exporter for Prometheus scraping (NOT active in stable/mysql)
+  serviceMonitor:              # Prometheus Operator integration (used with ServiceMonitor CRD)
+    enabled: false             # Disabled by default (requires Prometheus Operator setup)
